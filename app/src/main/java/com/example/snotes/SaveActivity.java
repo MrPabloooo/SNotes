@@ -63,6 +63,10 @@ public class SaveActivity extends AppCompatActivity {
             return insets;
         });
 
+
+
+
+
         rtrnbtn = findViewById(R.id.rtrnbttn);
         rtrnbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,14 +95,22 @@ public class SaveActivity extends AppCompatActivity {
         String EditingIdent = getIntent().getStringExtra("EditingId");
 
 
+        switchDel = findViewById(R.id.switchDel);
+
         if (EditingIdent != null) {
             String EditingFile = NoteDao.getNameById(Integer.parseInt(EditingIdent));
             NameInput.setText(EditingFile);
         }
 
+        else
+        {
+            switchDel.setVisibility(View.GONE);
+
+        }
+
         HashInput = findViewById(R.id.hasher);
 
-        switchDel = findViewById(R.id.switchDel);
+
 
         Button SaveBtn = findViewById(R.id.SaveBtn);
 
@@ -235,6 +247,8 @@ public class SaveActivity extends AppCompatActivity {
                             encryptedContent,
                             hint
                     );
+
+
 
                     NoteDao.insert(note);
 
