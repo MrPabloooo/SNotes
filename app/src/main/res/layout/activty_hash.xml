@@ -51,7 +51,7 @@
                         android:id="@+id/textView5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To acces this note you need to unhash it twinki. "
+                        android:text="To acces this note you need to unhash it. "
                         android:textSize="12dp" />
 
                     <EditText

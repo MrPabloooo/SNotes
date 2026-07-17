@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(query == 0) {
                 TextView textView = new TextView(MainActivity.this);
-            textView.setText("Nothin here twinki");
+            textView.setText("Nothing to show");
             textView.setPadding(0, 150, 0, 0);
             textView.setTextSize(36);
             textView.setGravity(android.view.Gravity.CENTER);
@@ -315,14 +315,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                         new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("CONFIRMATION")
-                                .setMessage("ARE U SURE??????")
+                                .setTitle("Confirmation")
+                                .setMessage("Do you want to delete this note?")
                                 .setPositiveButton("Yes", (dialog, which) -> {
 
                                     noteDao.deleteById((int) deletebtn.getTag());
                                     loadNotes();
                                 })
-                                .setNegativeButton("Cancel", (dialog, which) -> {
+                                .setNegativeButton("No", (dialog, which) -> {
                                     dialog.dismiss();
                                 })
                                 .show();

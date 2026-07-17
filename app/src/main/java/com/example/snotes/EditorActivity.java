@@ -41,8 +41,8 @@ public class EditorActivity extends AppCompatActivity {
                         public void handleOnBackPressed() {
 
                             new AlertDialog.Builder(EditorActivity.this)
-                                    .setTitle("CONFIRMATION")
-                                    .setMessage("DO YOU WANNA LEAVE WITHOUT SAVING????")
+                                    .setTitle("Confirmation")
+                                    .setMessage("Do you want to save changes?")
                                     .setPositiveButton("Yes", (dialog, which) -> {
 
                                         finish();

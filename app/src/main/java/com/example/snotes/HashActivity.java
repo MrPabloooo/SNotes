@@ -79,7 +79,7 @@ public class HashActivity extends AppCompatActivity {
         }
 
         if (ContentToEdit == null) {
-            Toast.makeText(this, "Brak content", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No content", Toast.LENGTH_SHORT).show();
             return;
         }
 
