@@ -187,6 +187,7 @@ public class SaveActivity extends AppCompatActivity {
                 }
 
 
+
                 // EDYCJA
                 if (EditingId != null) {
 
@@ -196,11 +197,33 @@ public class SaveActivity extends AppCompatActivity {
                             hint
                     );
 
-                    NoteDao.insert(note);
 
-                    NoteDao.deleteById(
-                            Integer.parseInt(EditingId)
-                    );
+
+                    if(switchDel.isChecked()) {
+                        NoteDao.deleteById(
+                                Integer.parseInt(EditingId)
+                        );
+                    }
+                    else {
+
+
+
+                            // jeżeli nie edytujemy albo znaleziony ID nie jest aktualnym ID
+                        if (currentTitle.equals(NoteDao.getNameById(Integer.parseInt(EditingId)))) {
+
+                                Toast.makeText(
+                                        SaveActivity.this,
+                                        "Note already exists",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                                return;
+                            }
+
+
+                    }
+
+                    NoteDao.insert(note);
 
                 }
 
