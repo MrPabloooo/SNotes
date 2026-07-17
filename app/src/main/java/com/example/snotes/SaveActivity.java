@@ -128,7 +128,7 @@ public class SaveActivity extends AppCompatActivity {
                 String EditingId = getIntent().getStringExtra("EditingId");
 
 
-                // sprawdzanie nazwy
+
                 if (currentTitle.isEmpty()) {
                     Toast.makeText(SaveActivity.this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -141,7 +141,7 @@ public class SaveActivity extends AppCompatActivity {
                 }
 
 
-                // sprawdzanie hasła
+
                 if (hash.isEmpty()) {
                     Toast.makeText(SaveActivity.this, "Hash cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -154,13 +154,13 @@ public class SaveActivity extends AppCompatActivity {
                 }
 
 
-                // sprawdzanie czy istnieje taka nazwa
+
                 Integer IdCheck = NoteDao.getIdByTitle(currentTitle);
 
 
                 if (IdCheck != null) {
 
-                    // jeżeli nie edytujemy albo znaleziony ID nie jest aktualnym ID
+
                     if (EditingId == null || IdCheck != Integer.parseInt(EditingId)) {
 
                         Toast.makeText(
@@ -174,7 +174,7 @@ public class SaveActivity extends AppCompatActivity {
                 }
 
 
-                // szyfrowanie
+
                 String encryptedContent = Hasher();
 
 
@@ -188,7 +188,7 @@ public class SaveActivity extends AppCompatActivity {
 
 
 
-                // EDYCJA
+
                 if (EditingId != null) {
 
                     Note note = new Note(
@@ -208,7 +208,7 @@ public class SaveActivity extends AppCompatActivity {
 
 
 
-                            // jeżeli nie edytujemy albo znaleziony ID nie jest aktualnym ID
+
                         if (currentTitle.equals(NoteDao.getNameById(Integer.parseInt(EditingId)))) {
 
                                 Toast.makeText(
@@ -227,7 +227,7 @@ public class SaveActivity extends AppCompatActivity {
 
                 }
 
-                // NOWA NOTATKA
+
                 else {
 
                     Note note = new Note(
@@ -241,7 +241,7 @@ public class SaveActivity extends AppCompatActivity {
                 }
 
 
-                // powrót do MainActivity
+
                 Intent intent = new Intent(
                         SaveActivity.this,
                         MainActivity.class
