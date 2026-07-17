@@ -37,6 +37,7 @@ public class SaveActivity extends AppCompatActivity {
 
     private NoteDao NoteDao;
 
+
     private EditText HashInput;
     private Switch switchDel;
 
@@ -95,11 +96,15 @@ public class SaveActivity extends AppCompatActivity {
         String EditingIdent = getIntent().getStringExtra("EditingId");
 
 
+        HashInput = findViewById(R.id.hasher);
+
         switchDel = findViewById(R.id.switchDel);
 
         if (EditingIdent != null) {
             String EditingFile = NoteDao.getNameById(Integer.parseInt(EditingIdent));
             NameInput.setText(EditingFile);
+            HintInput.setText(NoteDao.getHintById(Integer.parseInt(EditingIdent)));
+            HashInput.setText(getIntent().getStringExtra("Hasher"));
         }
 
         else
@@ -108,7 +113,7 @@ public class SaveActivity extends AppCompatActivity {
 
         }
 
-        HashInput = findViewById(R.id.hasher);
+
 
 
 

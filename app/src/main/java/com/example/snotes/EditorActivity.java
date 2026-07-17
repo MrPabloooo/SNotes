@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ public class EditorActivity extends AppCompatActivity {
 
     private String editingid;
 
+    private Button Returner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,48 @@ public class EditorActivity extends AppCompatActivity {
             return insets;
         });
 
+        Returner = findViewById(R.id.returnBtn);
+
+        editingid = getIntent().getStringExtra("idToEdit");
+
+        Returner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if("false".equals(getIntent().getStringExtra("ForViewing")) || editingid == null) {
+
+
+                    new AlertDialog.Builder(EditorActivity.this)
+                            .setTitle("Confirmation")
+                            .setMessage("Do you want to leave without saving changes?")
+                            .setPositiveButton("Yes", (dialog, which) -> {
+
+                                finish();
+                            })
+                            .setNegativeButton("No", (dialog, which) -> {
+                                dialog.dismiss();
+                            })
+                            .show();
+
+
+                }
+                else {
+                    finish();
+                }
+
+
+            }
+        });
+
+
+
+
+        if("true".equals(getIntent().getStringExtra("ForViewing"))) {
+
+
+        }
+
+
 
         if("true".equals(getIntent().getStringExtra("ForViewing"))) {
 
@@ -61,7 +105,7 @@ public class EditorActivity extends AppCompatActivity {
 
                             new AlertDialog.Builder(EditorActivity.this)
                                     .setTitle("Confirmation")
-                                    .setMessage("Do you want to save changes?")
+                                    .setMessage("Do you want to leave without saving changes?")
                                     .setPositiveButton("Yes", (dialog, which) -> {
 
                                         finish();
@@ -114,11 +158,15 @@ public class EditorActivity extends AppCompatActivity {
                     );
                 }
 
+
                 Intent intent = new Intent(EditorActivity.this, SaveActivity.class);
 
 
                 intent.putExtra("content", EditorText.getText().toString());
                 intent.putExtra("EditingId", editingid);
+                intent.putExtra("Hasher", getIntent().getStringExtra("Hash"));
+
+
 
 
                 startActivity(intent);

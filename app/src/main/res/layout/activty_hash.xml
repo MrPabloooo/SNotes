@@ -62,7 +62,8 @@
                         android:layout_marginBottom="15dp"
                         android:ems="10"
                         android:hint="Hash"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:password="true" />
 
                     <TextView
                         android:id="@+id/HintText"

@@ -174,6 +174,7 @@ public class HashActivity extends AppCompatActivity {
                             intent.putExtra("contentToEdit", decrypted);
                             intent.putExtra("idToEdit", editingid);
                             intent.putExtra("ForViewing", "false");
+                            intent.putExtra("Hash", UnHasher.getText().toString());
                             startActivity(intent);
                             finish();
 

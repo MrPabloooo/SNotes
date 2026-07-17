@@ -64,7 +64,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:password="true" />
 
                     <TextView
                         android:id="@+id/textView4"
