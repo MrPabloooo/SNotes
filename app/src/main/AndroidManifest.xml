@@ -24,7 +24,8 @@
         </activity>
 
         <activity
-            android:name=".EditorActivity" />
+            android:name=".EditorActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".SaveActivity" />

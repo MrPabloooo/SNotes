@@ -30,6 +30,25 @@ public class EditorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_editor);
+
+        View rootView = findViewById(R.id.main);
+
+        ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars()
+                    | WindowInsetsCompat.Type.displayCutout());
+            boolean imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime());
+            int imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom;
+            if (imeVisible) {
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, imeHeight);
+            } else {
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            }
+            return insets;
+        });
+
 
         if("true".equals(getIntent().getStringExtra("ForViewing"))) {
 
@@ -62,26 +81,11 @@ public class EditorActivity extends AppCompatActivity {
 
         editingid = getIntent().getStringExtra("idToEdit");
 
-
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_editor);
-
         EditorText = findViewById(R.id.EditorTxt);
-
-
 
         if(ContentToEdit != null) {
             EditorText.setText(ContentToEdit);
         }
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-
 
     exitbtn = findViewById(R.id.exitbuttion);
 
